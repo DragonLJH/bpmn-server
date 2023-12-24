@@ -1,6 +1,6 @@
 package com.bpmn.bpmnserver.mapper;
 
-import com.bpmn.bpmnserver.common.Bpmn;
+
 import com.bpmn.bpmnserver.common.UserBpmn;
 import org.apache.ibatis.annotations.*;
 

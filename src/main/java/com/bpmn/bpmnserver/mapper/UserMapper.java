@@ -1,14 +1,16 @@
 package com.bpmn.bpmnserver.mapper;
 
-import com.bpmn.bpmnserver.common.Bpmn;
+
 import com.bpmn.bpmnserver.common.User;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
 
+@Mapper
 public interface UserMapper {
 
 
