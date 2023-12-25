@@ -9,17 +9,17 @@ import java.util.UUID;
 @Component
 public class UtilsPublic {
 
-    private String BPMN_PATH_WIN = "D:\\HZ\\dragon\\bpmn";
+    private String BPMN_PATH_WIN = "D:\\HZ\\dragon\\bpmn\\";
 
-    private String FORM_PATH_WIN = "D:\\HZ\\dragon\\form";
+    private String FORM_PATH_WIN = "D:\\HZ\\dragon\\form\\";
 
     public void createBpmnFile(MultipartFile filePart, String fileName, String path) throws Exception {
         path = BPMN_PATH_WIN + path;
         createFile(filePart, fileName, path);
     }
 
-    public String readBpmnFile(String formId, String fileName) {
-        String path = BPMN_PATH_WIN + "\\" + formId + "\\" + fileName;
+    public String readBpmnFile(String bpmnId, String fileName) {
+        String path = BPMN_PATH_WIN + bpmnId + "\\" + fileName;
         return readFile(path);
     }
 
@@ -29,7 +29,7 @@ public class UtilsPublic {
     }
 
     public String readFormFile(String formId, String fileName) {
-        String path = FORM_PATH_WIN + "\\" + formId + "\\" + fileName;
+        String path = FORM_PATH_WIN + formId + "\\" + fileName;
         return readFile(path);
     }
 

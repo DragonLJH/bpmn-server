@@ -24,6 +24,9 @@ public class FormBpmnService {
 		return formBpmnMapper.queryFormBpmnBybpmnId(bpmnId);
 	}
 
+	public FormBpmn queryFormBpmnByformId(String formId){
+		return formBpmnMapper.queryFormBpmnByformId(formId);
+	}
 	public Boolean insertOne(FormBpmn formBpmn) {
 		Integer f = formBpmnMapper.countAll();
 		formBpmnMapper.insertOne(formBpmn);
