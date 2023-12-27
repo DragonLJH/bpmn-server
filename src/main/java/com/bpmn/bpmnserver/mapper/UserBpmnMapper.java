@@ -9,13 +9,13 @@ import java.util.List;
 @Mapper
 public interface UserBpmnMapper {
 
-    @Select("select id, user_id, bpmn_id  from user_bpmn")
+    @Select("select id, user_id, bpmn_id, mode  from user_bpmn")
     List<UserBpmn> queryAllUserBpmn();
 
-    @Select("select id, user_id, bpmn_id from user_bpmn where user_id = #{userId}")
+    @Select("select id, user_id, bpmn_id, mode from user_bpmn where user_id = #{userId}")
     List<UserBpmn> queryUserBpmnByUserId(String userId);
 
-    @Insert("insert into bpmn (id, user_id, bpmn_id) values (#{id}, #{userId}, #{bpmnId}) ")
+    @Insert("insert into user_bpmn (id, user_id, bpmn_id, mode) values (#{id}, #{userId}, #{bpmnId}, #{mode}) ")
     void insertOne(UserBpmn userBpmn);
 
     @Select("select count(id) from user_bpmn")
@@ -31,6 +31,7 @@ public interface UserBpmnMapper {
             "    <if test='id != null'>u.id=#{id},</if>",
             "    <if test='userId != null'>u.user_id=#{userId},</if>",
             "    <if test='bpmnId != null'>u.bpmn_id=#{bpmnId},</if>",
+            "    <if test='mode != null'>u.mode=#{mode},</if>",
             "  </set>",
             "where u.id = #{id} ",
             "</script>"})

@@ -56,8 +56,8 @@ public class FormBpmnController {
         FormBpmn formBpmn = formBpmnService.queryFormBpmnByformId(formId);
         m.put("formId",formId);
         m.put("bpmnId",formBpmn.getBpmnId());
-        m.put("bpmnMap", myUtilsPublic.readBpmnFile(formId, formBpmn.getBpmnMap()));
-        m.put("formMap", myUtilsPublic.readBpmnFile(formId, formBpmn.getFormMap()));
+        m.put("bpmnMap", myUtilsPublic.readFormFile(formId, formBpmn.getBpmnMap()));
+        m.put("formMap", myUtilsPublic.readFormFile(formId, formBpmn.getFormMap()));
         return myResult.setOk(m);
     }
 

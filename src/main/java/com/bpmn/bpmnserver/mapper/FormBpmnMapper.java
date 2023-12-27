@@ -23,7 +23,7 @@ public interface FormBpmnMapper {
     @Select("select bpmn_id, form_id, bpmn_map, form_map from form_bpmn  where form_id = #{formId}")
     FormBpmn queryFormBpmnByformId(String formId);
 
-    @Insert("insert into form_bpmn (bpmn_id, form_id, bpmn_map, form_map) values (#{bpmnId},#{formId},#{formMap},#{bpmnMap}) ")
+    @Insert("insert into form_bpmn (bpmn_id, form_id, bpmn_map, form_map) values (#{bpmnId},#{formId},#{bpmnMap},#{formMap}) ")
     void insertOne(FormBpmn formBpmn);
 
     @Select("select count(form_id) from form_bpmn")

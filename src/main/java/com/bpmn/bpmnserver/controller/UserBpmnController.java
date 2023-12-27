@@ -6,10 +6,7 @@ import com.bpmn.bpmnserver.service.UserBpmnService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,14 +33,25 @@ public class UserBpmnController {
     }
 
     @ApiOperation("根据用户id获取用户流程信息----queryUserBpmnByUserId")
-    @GetMapping("/queryUserBpmnByUserId")
-    public Result<List<UserBpmn>> queryUserBpmnByUserId(String userId) {
+    @GetMapping("/queryUserBpmnByUserId/{userId}")
+    public Result<List<UserBpmn>> queryUserBpmnByUserId(@PathVariable("userId") String userId) {
         return myResult.setOk(userBpmnService.queryUserBpmnByUserId(userId));
     }
 
     @ApiOperation("插入一条数据----save")
-    @GetMapping("/save")
+    @PostMapping("/save")
     public Result<Boolean> save(UserBpmn userBpmn) {
+        String bpmnId = userBpmn.getBpmnId();
+        String userId = userBpmn.getUserId();
+        List<UserBpmn> list = userBpmnService.queryUserBpmnByUserId(userId);
+        if(list != null){
+            for(UserBpmn u : list){
+                String sBpmnId = u.getBpmnId();
+                if(sBpmnId.equals(bpmnId)){
+                    return myResult.setOk(false);
+                }
+            }
+        }
         return myResult.setOk(userBpmnService.insertOne(userBpmn));
     }
 

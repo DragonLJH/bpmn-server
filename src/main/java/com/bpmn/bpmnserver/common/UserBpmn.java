@@ -3,7 +3,10 @@ package com.bpmn.bpmnserver.common;
 public class UserBpmn {
     public Integer id;
     public String userId;
+
     public String bpmnId;
+
+    public String mode;
 
     public Integer getId() {
         return id;
@@ -27,5 +30,13 @@ public class UserBpmn {
 
     public void setBpmnId(String bpmnId) {
         this.bpmnId = bpmnId;
+    }
+
+    public String getMode() {
+        return mode;
+    }
+
+    public void setMode(String mode) {
+        this.mode = mode;
     }
 }
